@@ -15,8 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LesSkynn",
-  description: "Discover your perfect skincare routine with LesSkyn. Take our quick quiz and get personalized product recommendations tailored to your skin type and concerns.",
+  title: "LesSkyn - Your Skincare Assistant",
+  description:
+    "Discover your perfect skincare routine with LesSkyn. Take our quick quiz and get personalized product recommendations tailored to your skin type and concerns.",
+  icons: {
+    icon: "/assets/logo.png",
+    apple: "/assets/logo.png",
+  },
 };
 
 export default async function RootLayout({
@@ -24,7 +29,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session=await auth();
+  const session = await auth();
   console.log("session: ", session);
 
   return (
@@ -32,9 +37,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SessionProvider session={session}>
-        {children}
-        </SessionProvider>
+        <SessionProvider session={session}>{children}</SessionProvider>
       </body>
     </html>
   );
