@@ -49,6 +49,7 @@ export async function createGoogleMeetEvent({
   const response = await calendar.events.insert({
     calendarId: "primary",
     conferenceDataVersion: 1,
+    sendUpdates: "all", // Send email notifications to all attendees
     requestBody: {
       summary: title,
       description,
